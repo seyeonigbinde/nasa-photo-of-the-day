@@ -1,16 +1,15 @@
-import React, {useState, useEffect}  from 'react'
-import axios from 'axios'
+import React from 'react'
 
 export default function Photo (props) {
-;
-  // const [details, setDetails] = useState('')
-  const { nasaPhoto } = props;
+
+  const { nasaPhoto, details, title } = props;
   
 
   return (
     <div className=''>
-      <h2>Photo of the Day</h2>
-      <img src={nasaPhoto}></img>
+      <h3>Title: {title}</h3>
+      <img src={nasaPhoto} alt='The NASA'/>
+      <p>{details}</p>
     </div>
   )
 }

@@ -7,12 +7,16 @@ import axios from 'axios';
 function App() {
   const [navigation, setNavigation] = useState('');
   const [nasaPhoto, setNasaPhoto] = useState(null);
+  const [details, setDetails] = useState(null);
+  const [title, setTitle] = useState(null);
 
   useEffect(() => {
     axios
     .get(`https://api.nasa.gov/planetary/apod?api_key=cFlc5i4EY5FWaMYSg9eNJa0p9Tvhn35Kjombothm`)
       .then(res => {
         setNasaPhoto(res.data.url)
+        setDetails(res.data.explanation)
+        setTitle(res.data.title)
         console.log(res.data)
       })
       .catch( err => {
@@ -22,20 +26,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome To NASA</h1>
+      <h1>NASA Photo of the Day</h1>
      
       {setNavigation && (
-       <Navigation />
+       <Navigation navigation={navigation}/>
      
      )}
-      {
-      
-        <Photo nasaPhoto={nasaPhoto}/>
-        }
-       <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      {setNasaPhoto && (
+      <Photo nasaPhoto={nasaPhoto} details={details} title={title}/>
+      )}
+       
 
     
     </div>

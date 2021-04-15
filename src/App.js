@@ -3,6 +3,7 @@ import "./App.css";
 import Navigation from "./Navigation";
 import Photo from "./Photo";
 import axios from 'axios';
+import styled from 'styled-components';
 
 function App() {
   const [navigation, setNavigation] = useState('');
@@ -24,9 +25,33 @@ function App() {
       })
   }, [])
 
+  const StyleHeader = styled.div`
+   
+    display: flex ;
+    justify-content: space-between;
+    width: 90%;
+
+   h1{
+    color: ${pr => pr.theme.tertiaryColor};
+   font-family: ${pr => pr.theme.fontFamily};
+   font-size: 2.3rem;
+   padding: ${pr => pr.theme.padding.small};
+    }
+
+    img{
+      width: 20%;
+      margin: auto;
+    }
+
+  `
+
   return (
     <div className="App">
-      <h1>NASA Photo of the Day</h1>
+
+      <StyleHeader>
+        <img src='https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png' alt=''/>
+        <h1>National Aeronautics and Space Administration (NASA)</h1>
+        </StyleHeader>
      
       {setNavigation && (
        <Navigation navigation={navigation}/>

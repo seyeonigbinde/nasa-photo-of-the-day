@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledFriend = styled.div`
+const StyledNavigation = styled.div`
 color: ${pr => {
     return pr.danger ? pr.theme.dangerColor : pr.theme.primaryColor
   }};
@@ -45,13 +45,13 @@ export default function Navigation(props) {
 
   return (
     // <StyledFriend danger={navigation.nav === 'Photo of the Day'} >
-    <StyledFriend danger={navigation.nav === 'Photo of the Day'} >
+    <StyledNavigation danger={navigation.a === 'Photo of the Day'} >
         <nav>
             <a href = '#home'> Home</a>
             <a href = '#about'>About</a>
-            <a href = '#photo' >Photo of the Day</a>
+            <a href = '#photo' class = 'active'>Photo of the Day</a>
             <a href = '#contact'>Contact</a>
         </nav>
-    </StyledFriend>
+    </StyledNavigation>
   )
 }

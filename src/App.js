@@ -11,6 +11,7 @@ function App() {
   const [details, setDetails] = useState(null);
   const [title, setTitle] = useState(null);
 
+// useEffect
   useEffect(() => {
     axios
     .get(`https://api.nasa.gov/planetary/apod?api_key=cFlc5i4EY5FWaMYSg9eNJa0p9Tvhn35Kjombothm`)
@@ -25,33 +26,40 @@ function App() {
       })
   }, [])
 
-  const StyleHeader = styled.div`
-   
-    display: flex ;
-    justify-content: space-between;
-    width: 90%;
+// Styling
+  const StylePage = styled.div`
+     text-align: center;
+     width: 100%;
+  
 
-   h1{
-    color: ${pr => pr.theme.tertiaryColor};
-   font-family: ${pr => pr.theme.fontFamily};
-   font-size: 2.3rem;
-   padding: ${pr => pr.theme.padding.small};
-    }
+     `
+  const StyleBody = styled.div`
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+
+    h1{
+      color: ${pr => pr.theme.tertiaryColor};
+      font-family: ${pr => pr.theme.fontFamily};
+      font-size: 2.3rem;
+      padding: ${pr => pr.theme.padding.small};
+      }
 
     img{
       width: 20%;
-      margin: auto;
     }
 
-  `
+    `
 
   return (
-    <div className="App">
+    <StylePage>
 
-      <StyleHeader>
+      <StyleBody>
         <img src='https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png' alt=''/>
         <h1>National Aeronautics and Space Administration (NASA)</h1>
-        </StyleHeader>
+        </StyleBody>
      
       {setNavigation && (
        <Navigation navigation={navigation}/>
@@ -61,9 +69,7 @@ function App() {
       <Photo nasaPhoto={nasaPhoto} details={details} title={title}/>
       )}
        
-
-    
-    </div>
+    </StylePage>
   );
 }
 

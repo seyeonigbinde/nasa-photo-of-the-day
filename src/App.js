@@ -26,7 +26,8 @@ function App() {
       })
   }, [])
 
-// Styling
+// Styling...
+//additional styling
   const StylePage = styled.div`
      text-align: center;
      width: 100%;
